@@ -4,6 +4,20 @@
 
 const username = "Mango";
 
+switch (username) {
+  case "Poly":
+    console.log("1");
+    break;
+
+  case "Mango":
+    console.log("2");
+    break;
+
+  case "Apple":
+    console.log("3");
+    break;
+}
+
 /**
  * Виконай рефакторинг коду задачі використовуючи switch.
  *
@@ -13,16 +27,20 @@ const username = "Mango";
  * Якщо до дедлайну 3+ днів - виведи рядок "Date in the future"
  */
 
-const daysUntilDeadline = 5;
+const daysUntilDeadline = 0;
 
-if (daysUntilDeadline === 0) {
-  console.log("Today");
-} else if (daysUntilDeadline === 1) {
-  console.log("Tomorrow");
-} else if (daysUntilDeadline === 2) {
-  console.log("Overmorrow");
-} else {
-  console.log("Date in the future");
+switch (daysUntilDeadline) {
+  case 0:
+    console.log("Today");
+    break;
+  case 1:
+    console.log("Tomorrow");
+    break;
+  case 2:
+    console.log("OverTomorrow");
+    break;
+  default:
+    console.log("Date in the future");
 }
 
 /*
@@ -36,7 +54,46 @@ if (daysUntilDeadline === 0) {
  * - 'Вам перезвонит менеджер'
  */
 
-const option = 1;
+const option = 5;
 let message = "";
 
+switch (option) {
+  case 1:
+    message = "Вы сможете забрать товар завтра с 12:00 в нашем офисе";
+    break;
+
+  case 2:
+    message = "Курьер доставит заказ завтра с 9:00 до 18:00";
+    break;
+
+  case 3:
+    message = "Посылка будет отправлена сегодня";
+    break;
+
+  default:
+    message = "Вам перезвонит менеджер";
+}
+
 console.log(message);
+
+// const x = 10;
+
+// switch (x) {
+//   case 1: // x === 1
+//     break;
+//   case 2: // x === 2
+//     break;
+//   case 3: // x === 3
+//     break;
+//   case 4: // x === 4
+//     break;
+//   case 5:
+//     break;
+// }
+
+// if (age > 18) {
+// } else if (money > 50) {
+// } else if (x === 3) {
+// } else if (x === 4) {
+// } else if (x > 5) {
+// }

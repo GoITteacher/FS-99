@@ -2,42 +2,93 @@
  * Псевдомасив arguments и Array.from
  */
 
-function foo() {
-  console.log(arguments);
-  const args = Array.from(arguments);
-  console.log(args);
-}
+/* 
+push
+pop
+shift
+indexOf
+slice
+includes
+splice
+*/
 
-fn(1, 2, 3);
-fn(1, 2, 3, 4, 5);
-fn(1, 2, 3, 4, 5, 6, 7);
+// console.log([]);
+// function foo() {
+// let arguments = ["Hello", "World"]
+//   const args = Array.from(arguments);
+// }
+
+// foo("Hello", "World");
 
 /**
  * Напиши функцію add для складання довільної
- * кількості аргументів (чисел)
+ * кількості аргументів
  */
 
-const add = function (arguments) {
-  const args = Array.from(arguments);
-  let total = 0;
+// function getTotal() {
+//   const args = Array.from(arguments);
+//   let total = 1;
 
-  for (const arg of args) {
-    total += arg;
-  }
+//   for (const item of args) {
+//     total *= item;
+//   }
 
-  return total;
-};
+//   return total;
+// }
 
-console.log(add(1, 2, 3));
-console.log(add(1, 2, 4, 5, 6));
+// const res1 = getTotal(1, 2, 3, 4);
+// const res2 = getTotal(1, 2);
+// const res3 = getTotal(1, 5, 3, "Hello");
+
+// console.log(res1, res2, res3);
 
 /**
- * Напиши функцію calAverage() яка приймає довільну кількість
+ * Напиши функцію calcAverage() яка приймає довільну кількість
  * аргументів і повертає їхнє середнє значення. Усі аргументи
  * будуть лише числами.
  */
-function calAverage() {}
 
-console.log(calAverage(1, 2, 3, 4)); // 2.5
-console.log(calAverage(14, 8, 2)); // 8
-console.log(calAverage(27, 43, 2, 8, 36)); // 23.2
+// function calcAverage() {
+//   const args = Array.from(arguments);
+//   let total = 0;
+
+//   for (const elem of args) {
+//     total += elem;
+//   }
+
+//   return total / args.length;
+// }
+
+// const res1 = calcAverage(1, 2, 4, 5);
+// console.log(res1.toFixed(5));
+
+// =======================
+
+/* 
+    Написати функцію яка приймає першим параметром число на яке потрібно поділити суму усіх інших параметрів
+*/
+/* 
+function myFun() {
+  const firstElem = arguments[0];
+  let total = 0;
+
+  for (let i = 1; i < arguments.length; i += 1) {
+    total += arguments[i];
+  }
+
+  return total / firstElem;
+} */
+
+/* function myFun() {
+  let total = 0;
+  const args = Array.from(arguments);
+  const firstElem = args.shift();
+
+  for (const item of args) {
+    total += item;
+  }
+
+  return total / firstElem;
+} */
+
+// myFun(5, 10, 15, 20);

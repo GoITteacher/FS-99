@@ -9,8 +9,42 @@
  * --------------------------
  */
 
-const arr = [1, 2, 3];
+/* const user1 = {
+  name: "Anastasiya",
+};
+const user2 = {
+  name: "Mariya",
+};
+const user3 = {
+  name: "Lika",
+};
 
-function foo() {
-  console.log("hello");
-}
+user3.name = "Hello";
+
+const user4 = user3;
+
+console.log(user3 === user4); */
+
+// const user1 = { box: "box1" };
+// const user2 = { box: "box1" };
+
+// const user1 = { box: "123" };
+
+// const user2 = user1;
+
+/* 
+
+
+
+
+
+
+
+*/
+
+// function foo() {
+//   console.log("awd");
+// }
+// console.log(foo);
+// foo.myProps = "Hello World";
+// console.dir(foo.myProps);

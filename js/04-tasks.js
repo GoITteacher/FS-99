@@ -22,7 +22,15 @@ const account = {
    * Метод створює та повертає об'єкт транзакції.
    * Приймає суму та тип транзакції.
    */
-  createTransaction(amount, type) {},
+  createTransaction(amount, type) {
+    const obj = {
+      id: Date.now() + Math.round(Math.random() * 1000),
+      amount,
+      type,
+    };
+
+    return obj;
+  },
 
   /*
    * Метод, що відповідає за додавання суми до балансу.
@@ -30,7 +38,13 @@ const account = {
    * Викликає createTransaction для створення об'єкта транзакції
    * після чого додає його до історії транзакцій
    */
-  deposit(amount) {},
+  deposit(amount) {
+    if (amount <= 0) return;
+
+    this.balance += amount;
+    const transaction = this.createTransaction(amount, Transaction.DEPOSIT);
+    this.transactions.push(transaction);
+  },
 
   /*
    * Метод, що відповідає за зняття суми з балансу.
@@ -41,21 +55,53 @@ const account = {
    * Якщо amount більше ніж поточний баланс, виводь повідомлення
    * про те, що зняття такої суми не можливе, недостатньо коштів.
    */
-  withdraw(amount) {},
+  withdraw(amount) {
+    if (amount < 0 || amount > this.balance) return;
+    this.balance -= amount;
+    const transaction = this.createTransaction(amount, Transaction.WITHDRAW);
+    this.transactions.push(transaction);
+  },
 
   /*
    * Метод повертає поточний баланс
    */
-  getBalance() {},
+  getBalance() {
+    return this.balance;
+  },
 
   /*
    * Метод шукає та повертає об'єкт транзакції по id
    */
-  getTransactionDetails(id) {},
+  getTransactionDetails(id) {
+    for (const item of this.transactions) {
+      if (item.id === id) {
+        return item;
+      }
+    }
+  },
 
   /*
    * Метод повертає кількість коштів
    * певного типу транзакції з усієї історії транзакцій
    */
-  getTransactionTotal(type) {},
+  getTransactionTotal(type) {
+    let total = 0;
+
+    for (const item of this.transactions) {
+      if (item.type === type) {
+        total += item.amount;
+      }
+    }
+
+    return total;
+  },
 };
+
+account.deposit(200);
+account.deposit(50);
+account.withdraw(100);
+account.deposit(30);
+account.withdraw(500);
+
+console.log(account.getBalance());
+console.log(account.getTransactionTotal(Transaction.WITHDRAW));

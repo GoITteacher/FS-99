@@ -1,3 +1,88 @@
+
+// function getUser(showMessage) {
+//   showMessage();
+
+//   return {
+//     name: "Oleh",
+//     age: 23
+//   }
+// }
+
+
+
+// function helloMessage() {
+//   console.log("HELLO");
+// }
+
+// getUser(helloMessage)
+
+
+// function foo2(callback) {
+//   callback()
+
+//   console.log(callback === helloMessage);
+// };
+
+
+// foo2(helloMessage);
+
+
+// function showDataBaseError() {
+//   console.error("Data base is not working");
+// }
+
+// function showNotAuthorizedError() {
+//   console.error("User is not authorized");
+// }
+
+
+// function fetchUser(onError, onSuccess) {
+//   const dataBaseUser = {
+//     name: "Ivan",
+//     age: 26
+//   };
+
+//   if (!dataBaseUser) {
+//     onError();
+//   } else {
+//     onSuccess();
+//     return dataBaseUser;
+//   }
+// }
+
+
+
+// function fetchUserAvatar(onError) {
+//   // const dataBaseAvatar = "https://www.com/avatar.jpg";
+//   const dataBaseAvatar = null;
+
+//   if (!dataBaseAvatar) {
+//     onError();
+//   } else {
+//     return dataBaseAvatar;
+//   }
+// }
+
+
+// const user = fetchUser(showDataBaseError, function () {
+//   console.log("Everything is good");
+// });
+// const userAvatar = fetchUserAvatar(showDataBaseError);
+
+//
+//
+//
+//
+//
+
+// fetchUser(showDataBaseError, function () {
+//   console.log("Move to user page");
+// });
+
+// fetchUserAvatar(showNotAuthorizedError);
+
+
+
 /**
  * Функція зворотнього виклика (callback)
  *
@@ -6,25 +91,25 @@
  * - Інлайн-колбеки
  */
 
-function fnA(message) {
-  console.log(message);
-}
+// function fnA(callback) {
+//   const result = callback();
+//   console.log(result);
+// }
 
-function fnB(number) {
-  console.log("Log during fnB execution ", number);
-}
 
-fnA("A message");
+// fnA(function () {
+//   return "HELLO HOW ARE YOU"
+// })
 
 /**
  * Функція calc(a, b, callback)
  */
 
-function calc(a, b) {}
+// function calc(a, b) {}
 
-calc(2, 3);
+// calc(2, 3);
 
-calc(10, 8);
+// calc(10, 8);
 
 /**
  * Напишіть функцію each(array, callback), яка першим параметром очікує масив,
@@ -33,12 +118,19 @@ calc(10, 8);
  * результати виклику коллбека.
  */
 
-function each(array, callback) {}
+// function each(array, callback) {
+//   const result = [];
+
+//   for (const number of array) {
+//     const newNumber = callback(number);
+//     result.push(newNumber);
+//   }
+
+//   return result;
+// }
 
 // console.log(
-//   each([64, 49, 36, 25, 16], function (value) {
-//     return value * 2;
-//   })
+//   each([64, 49, 36, 25, 16], value => value * 2)
 // );
 // console.log(
 //   each([64, 49, 36, 25, 16], function (value) {
@@ -55,8 +147,6 @@ function each(array, callback) {}
 //     return Math.ceil(value);
 //   })
 // );
-// console.log(
-//   each([1.5, 2.1, 16.4, 9.7, 11.3], function (value) {
-//     return Math.floor(value);
-//   })
-// );
+console.log(
+  each([1.5, 2.1, 16.4, 9.7, 11.3], (value) => Math.floor(value))
+);

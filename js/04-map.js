@@ -5,6 +5,13 @@
  * - Повертає новий масив такої ж довжини
  */
 
+
+// const numbers = [1,2,3,4,5];
+
+// const newNumbers = numbers.map((value) => value * 2);
+
+// console.log(newNumbers);
+
 const allCars = [
   { make: "Honda", model: "CR-V", amount: 14, price: 24045 },
   { make: "Honda", model: "Accord", amount: 2, price: 22455 },
@@ -22,19 +29,33 @@ const allCars = [
  * Нехай функція getModels повертає масив моделей (поле model) всіх автомобілів.
  */
 
-const getModels = (cars) => {};
+// const getModels = (cars) => {
+//   const result = cars.map(car => car.model);
 
-console.table(getModels(allCars));
+//   return result;
+// };
+
+// console.table(getModels(allCars));
 
 /**
  * Нехай функція makeCarsWithDiscount повертає новий масив об'єктів із змінним
  * значенням властивості price залежно від переданої знижки.
  */
 
-const makeCarsWithDiscount = (cars, discount) => {};
+// const makeCarsWithDiscount = (cars, discount) => {
+//   return cars.map(car => ({
+//     ...car,
+//     price: car.price - car.price * discount
+//   }))
+// };
 
-console.table(makeCarsWithDiscount(allCars, 0.2));
-console.table(makeCarsWithDiscount(allCars, 0.4));
+// console.table(makeCarsWithDiscount(allCars, 0.2));
+// console.table(makeCarsWithDiscount(allCars, 0.4));
+
+// const price = 1000;
+// const discount = 0.2;
+
+// const priceWithDiscount = price - price * discount;
 
 const players = [
   { id: "player-1", name: "Mango", timePlayed: 310, points: 54, online: false },
@@ -43,14 +64,23 @@ const players = [
   { id: "player-4", name: "Ajax", timePlayed: 150, points: 71, online: false },
   { id: "player-5", name: "Chelsy", timePlayed: 80, points: 48, online: true },
 ];
-console.table(players);
+// console.table(players);
 
 /*
  * Збільшуємо кількість годин гравця за id
  */
 
-const playerIdToUpdate = "player-3";
+// const playerIdToUpdate = "player-3";
 
-const updatedPlayers = players.map((player) => {});
+// const updatedPlayers = players.map((player) => {
+  if (player.id === playerIdToUpdate) {
+    return player;
+  }
 
-console.log(updatedPlayers);
+  return {
+    ...player,
+    timePlayed: player.timePlayed + 10
+  }
+});
+
+// console.table(updatedPlayers);

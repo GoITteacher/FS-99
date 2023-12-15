@@ -9,8 +9,9 @@
  */
 
 const numbers = [5, 10, 15, 20, 25];
+//                                                1
+const filteredNumbers = numbers.filter((item) => item % 2 === 0);
 
-const filteredNumbers = numbers;
 console.log(filteredNumbers);
 
 /**
@@ -104,10 +105,14 @@ const allCars = [
  * значення параметра threshold.
  */
 
-const filterByPrice = (cars, threshold) => {};
+/* const filterByPrice = (cars, threshold) => {
+  const myCars = cars.filter((car) => car.price > threshold);
 
-// console.table(filterByPrice(allCars, 30000));
-// console.table(filterByPrice(allCars, 25000));
+  return myCars;
+};
+
+console.log(filterByPrice(allCars, 30000));
+console.table(filterByPrice(allCars, 25000)); */
 
 /**
  * Нехай функція getCarsWithDiscount повертає масив автомобілів
@@ -127,3 +132,13 @@ const getCarsWithType = (cars, type) => {};
 
 // console.table(getCarsWithType(allCars, "suv"));
 // console.table(getCarsWithType(allCars, "sedan"));
+
+// ==========
+
+const arr = [1, 3, 56, 4, 1, 3, 5, 7, 7, 4, 3];
+
+const filteredArr = arr.filter((item, idx, array) => {
+  return item > idx;
+});
+
+console.log(filteredArr);

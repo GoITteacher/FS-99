@@ -1,7 +1,7 @@
 /**
  * Ланцюжки методів
  */
-const numbers = [1, 5, 2, 4, 3];
+/* const numbers = [1, 5, 2, 4, 3];
 
 const greaterThenTwo = numbers;
 console.log(greaterThenTwo);
@@ -14,7 +14,7 @@ console.log(sorted);
 
 const sortedbyChaining = numbers;
 console.log(sortedbyChaining);
-
+ */
 /**
  * -------------------------------------
  */
@@ -101,6 +101,24 @@ const allCars = [
   },
 ];
 
+// const result = allCars
+//   .map((car) => car.model)
+//   .filter((model) => model.length > )
+
+//   .sort();
+
+// ======================
+// const arr = [1, 3, 5, 6, 8, 5, 3, 1, 3, 4]; // 10
+
+// const result = arr
+//   .filter((item) => item > 5)
+//   .map((elem, idx, nums) => {
+//     return elem - nums.length;
+//   });
+
+// console.log(result);
+
+// console.log(result);
 /**
  * Нехай функція getAvailableCarNames повертає масив моделей автомобілів,
  * але тільки тих, які зараз на розпродажі.

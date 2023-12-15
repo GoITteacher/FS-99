@@ -1,119 +1,112 @@
-const numbers = [5, 10, 15, 20, 25];
+/* function myDay(callback1, callback) {
+  console.log("Застелити ліжко");
+  console.log("Почистити зуби");
+  console.log("Сніданок");
+  console.log("Піти до школи");
+  console.log("Займатись");
 
-const filteredNumbers = numbers;
-console.log(filteredNumbers);
+  callback();
 
-/**
- * ---------------------------
- */
-const allCars = [
+  console.log("Повернутись зі школи");
+  console.log("повечеряти");
+  console.log("Зробити дз");
+  console.log("Зубки");
+  console.log("Спати");
+}
+
+function goToMusicSchool() {
+  console.log("Піти до муз школи");
+}
+
+function goToDanceSchool() {
+  console.log("Піти до школи танців");
+}
+
+function goToStore() {
+  console.log("Піти до магазину");
+}
+
+myDay(goToMusicSchool);
+
+console.log("\n\n\n\n");
+myDay(goToDanceSchool); */
+
+// ============================
+
+// function foo(awhdnagefhjdawgdhahgwdh) {
+//   console.log(x);
+// }
+
+// ============================
+
+// function foo(x) {
+//   console.log(x);
+// }
+
+// const myValue = 10;
+
+// foo(myValue)
+
+// ============================
+
+// function foo(callback) {
+//   callback();
+// }
+
+// foo(function () {}, 10, 20);
+
+// ===========================
+
+// MAP
+
+// const arr = [1, 3, -5, 6, -1, 3, -5, 7, -8, 3];
+
+// function callback(item, idx, array) {
+//   return Math.abs(item);
+// }
+
+// const newArr = arr.map((num) => num * -1);
+
+// console.log(newArr);
+// ========================
+
+// const arr = [1, [[[2, [3]]], [[[[[4]]]]], 4], 4, [5, 6], 7];
+
+// const result = arr.flat(Infinity);
+
+// console.log(result);
+
+// const arr = [1, 2, 3, 4, 5, 6, 67, 88];
+
+// const newArr = arr
+//   .map((item) => {
+//     item * 2;
+//   })
+//   .flat(1);
+
+// const newArr = arr.flatMap(() => {});
+
+// ====================
+
+const cars = [
   {
-    make: "Honda",
-    model: "CR-V",
-    type: "suv",
-    amount: 14,
-    price: 24045,
-    onSale: true,
+    model: "Tesla S",
+    owners: ["Max", "Roman"],
   },
   {
-    make: "Honda",
-    model: "Accord",
-    type: "sedan",
-    amount: 2,
-    price: 22455,
-    onSale: true,
+    model: "BMW",
+    owners: ["Yaroslav"],
   },
   {
-    make: "Mazda",
-    model: "Mazda 6",
-    type: "sedan",
-    amount: 8,
-    price: 24195,
-    onSale: false,
+    model: "AUDI",
+    owners: ["Mila"],
   },
   {
-    make: "Mazda",
-    model: "CX-9",
-    type: "suv",
-    amount: 7,
-    price: 31520,
-    onSale: true,
-  },
-  {
-    make: "Toyota",
-    model: "4Runner",
-    type: "suv",
-    amount: 19,
-    price: 34210,
-    onSale: false,
-  },
-  {
-    make: "Toyota",
-    model: "Sequoia",
-    type: "suv",
-    amount: 16,
-    price: 45560,
-    onSale: false,
-  },
-  {
-    make: "Toyota",
-    model: "Tacoma",
-    type: "truck",
-    amount: 4,
-    price: 24320,
-    onSale: true,
-  },
-  {
-    make: "Ford",
-    model: "F-150",
-    type: "truck",
-    amount: 11,
-    price: 27110,
-    onSale: true,
-  },
-  {
-    make: "Ford",
-    model: "Fusion",
-    type: "sedan",
-    amount: 13,
-    price: 22120,
-    onSale: true,
-  },
-  {
-    make: "Ford",
-    model: "Explorer",
-    type: "suv",
-    amount: 6,
-    price: 31660,
-    onSale: false,
+    model: "Toyota",
+    owners: ["Lina", "Natali"],
   },
 ];
 
-/**
- * Нехай функція filterByPrice повертає масив автомобілів ціна яких менша ніж
- * значення параметра threshold.
- */
+const owners = cars.flatMap((car) => car.owners);
 
-const filterByPrice = (cars, threshold) => {};
-
-// console.table(filterByPrice(allCars, 30000));
-// console.table(filterByPrice(allCars, 25000));
-
-/**
- * Нехай функція getCarsWithDiscount повертає масив автомобілів
- * властивість onSale яких true.
- */
-
-const getCarsWithDiscount = (cars) => {};
-
-// console.table(getCarsWithDiscount(allCars));
-
-/**
- * Нехай функція getCarsWithType повертає масив автомобілів тип яких збігається
- * зі значенням параметра type.
- */
-
-const getCarsWithType = (cars, type) => {};
-
-// console.table(getCarsWithType(allCars, "suv"));
-// console.table(getCarsWithType(allCars, "sedan"));
+console.log(owners);

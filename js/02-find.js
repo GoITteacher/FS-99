@@ -5,10 +5,10 @@
  * - Повертає перший елемент, що задовольняє умові або undefined
  */
 
-const numbers = [5, 10, 15, 20, 25];
+/* const numbers = [5, 10, 15, 20, 25];
 
-const number = numbers;
-// console.log(number);
+const number = numbers.find((item, idx, array) => item % 7 == 0);
+console.log(number); */
 
 /**
  * -----------------------------
@@ -29,17 +29,25 @@ const cars = [
 /**
  * Шукаємо машину за моделлю
  */
-const getCarByModel = (cars, model) => {};
+const getCarByModel = (cars, m) => {
+  return cars.find(({ model }) => {
+    return model === m; //true
+  });
+};
+const myCar = getCarByModel(cars, "F-150");
 
-// console.log(getCarByModel(allCars, "F-150"));
+console.log(myCar.price);
 // console.log(getCarByModel(allCars, "CX-9"));
 // console.log(getCarByModel(allCars, "Cayenne"));
 
 /**
  * Шукаємо машину за типом кузова
  */
-const getCarByType = (cars, type) => {};
+// const getCarByType = (cars, type) => {
+//   const myCar = cars.find((car) => car.type === type);
+//   return myCar;
+// };
 
-// console.log(getCarByType(allCars, "sedan"));
-// console.log(getCarByType(allCars, "truck"));
-// console.log(getCarByType(allCars, "tank"));
+// console.log(getCarByType(cars, "sedan"));
+// console.log(getCarByType(cars, "truck"));
+// console.log(getCarByType(cars, "tank"));

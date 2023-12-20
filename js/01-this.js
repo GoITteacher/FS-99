@@ -6,33 +6,91 @@
  * - Контекст методу об'єкта
  */
 
+// function foo() {
+//   console.log(this);
+// }
+
+// foo(10, 20, 30);
+
 /**
  * Глобальний контекст
  */
-function foo() {
-  console.log("foo -> this", this);
-}
 
-foo();
+// function foo() {
+//   console.log("foo -> this", this);
+// }
+
+// foo();
 
 /**
  * Контекст методу об'єкта
  */
 
-const user = {
-  tag: "Mango",
-  showTag() {
-    console.log("showTag -> this", this);
-  },
-};
+// function foo() {
+//   console.log(this);
+// }
 
-user.showTag();
+// const cat1 = {
+//   name: "Marsik",
+//   showThis: foo,
+// };
+
+// const cat2 = {
+//   name: "Tom",
+//   showThis: foo,
+// };
+
+// const cat3 = {
+//   name: "Barsik",
+//   showThis: foo,
+// };
+
+// cat3.showThis();
 
 /**
  * Контекст методу об'єкта, но объявлена как внешняя функция.
  */
 
-function showTag() {
+/* const product1 = {
+  price: 123,
+  productName: "Apple",
+  showInfo() {
+    console.log(this.productName);
+  },
+};
+
+const obj2 = {
+  price: 234,
+  productName: "Orange",
+  showInfo: product1.showInfo,
+};
+
+product1.showInfo();
+obj2.showInfo(); */
+
+// ================================
+
+/* function drive() {
+  // const this = obj2;
+  console.log(this.age);
+}
+
+const obj1 = {
+  name: "Vasya",
+  age: 20,
+  drive: drive,
+};
+
+const obj2 = {
+  name: "Petya",
+  age: 22,
+  drive: drive,
+};
+
+obj1.drive();
+obj2.drive(); */
+// ================================
+/* function showTag() {
   console.log("showTag -> this", this);
   console.log("showTag -> this.tag", this.tag);
 }
@@ -46,41 +104,41 @@ const mango = {
 mango.showUserTag = showTag;
 console.log("mango", mango);
 
-mango.showUserTag();
+mango.showUserTag(); */
 
 /**
  * Вызов без контекста, но объявлена как метод объекта.
  */
 
-const poly = {
-  tag: "Poly",
-  showTag() {
-    console.log("showTag -> this", this);
-    console.log("showTag -> this.tag", this.tag);
-  },
-};
+// const poly = {
+//   tag: "Poly",
+//   showTag() {
+//     console.log("showTag -> this", this);
+//     // console.log("showTag -> this.tag", this.tag);
+//   },
+// };
 
-poly.showTag();
+// poly.showTag();
 
-const outerShowTag = poly.showTag;
+// const outerShowTag = poly.showTag;
 
-outerShowTag();
+// outerShowTag();
 
 /**
  * Контекст в callback-функциях
  */
 
-const jacob = {
-  tag: "Jacob",
-  showTag() {
-    console.log("showTag -> this", this);
-    console.log("showTag -> this.tag", this.tag);
-  },
-};
+function foo(callback) {
+  const obj = {
+    name: "Volodka",
+    test: callback,
+  };
 
-function invokeAction(action) {
-  console.log(action);
-  action();
+  obj.test();
 }
 
-invokeAction(jacob.showTag);
+function myCallback() {
+  console.log(this);
+}
+
+foo(myCallback);

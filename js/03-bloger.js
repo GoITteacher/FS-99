@@ -1,6 +1,6 @@
 /**
- * Напиши клас Blogger для створення об'єкта блогера з наступними властивостями:
- *  - email - пошта, рядок
+ * Напиши клас User для створення об'єкта блогера з наступними властивостями:
+ *  - name - пошта, рядок
  * - age - вік, число
  * - numberOfPosts - кількість постів, число
  * - topics - масив тем на яких спеціалізується блогер
@@ -10,6 +10,23 @@
  * - Додай метод getInfo(), який, повертає рядок: User ${email} is ${age} years old and has ${numPosts} posts.
  * - Додай метод updatePostCount(value), який у параметрі value приймає кількість постів, які потрібно додати користувачеві.
  */
+
+class User {
+  constructor({ name, age, numberOfPosts, topics }) {
+    this.name = name;
+    this.age = age;
+    this.numberOfPosts = numberOfPosts;
+    this.topics = topics;
+  }
+
+  getInfo() {
+    return `User ${this.name} is ${this.age} years old and has ${this.numberOfPosts} posts.`;
+  }
+
+  updatePostCount(value) {
+    this.numberOfPosts += value;
+  }
+}
 
 const mango = new User({
   name: "mango@mail.com",

@@ -1,11 +1,10 @@
 /*
  * Властивості елемента (hero)
- * - Зображення
  * - Текст та textContent
- * https://images.pexels.com/photos/1870376/pexels-photo-1870376.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=480
+ * - Зображення
+ * - Style
+ * - https://source.unsplash.com/500x500/?random=${id}&eat,bread,dish,meet,egg;
  */
-
-const imageEl = document.querySelector('.hero__image');
 
 const heroTitleEl = document.querySelector('.hero__title');
 
@@ -17,7 +16,13 @@ const heroTitleEl = document.querySelector('.hero__title');
  * - has(ім'я-атрибута)
  */
 
+const imageEl = document.querySelector('.hero__image');
 /*
  * Data-атрибути
  */
+
 const actions = document.querySelectorAll('.actions button');
+
+/*
+ * Style
+ */

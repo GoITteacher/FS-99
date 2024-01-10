@@ -39,13 +39,17 @@ body {
 }
 
 .color-picker__option {
-  display: inline-block;
-  width: 64px;
-  height: 64px;
+  width: fit-content;
+  height: fit-content;
   margin: 4px;
-  border: none;
   outline: none;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 .transaction-table {
@@ -61,4 +65,22 @@ body {
 .title__link {
   display: inline-flex;
   margin-left: 40px;
+}
+
+.active-link {
+  background-color: silver;
+}
+
+.box {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 100px;
+  height: 100px;
+}
+
+.valid {
+  background-color: rgba(33, 255, 33, 0.556);
+}
+.invalid {
+  background-color: rgba(234, 31, 31, 0.556);
 }

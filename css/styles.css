@@ -24,3 +24,55 @@ input {
   padding-top: 40px;
   padding-bottom: 40px;
 }
+
+input {
+  /* outline: none; */
+}
+
+.valid {
+  border: 3px solid rgb(66, 241, 35);
+}
+.invalid {
+  border: 3px solid rgb(255, 0, 0);
+}
+
+.item-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 300px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.item > p {
+  margin: 0;
+  padding: 0;
+}
+
+.item-car {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 10px;
+  margin: 5px;
+  border: 1px solid black;
+}
+
+.item-car > img {
+  width: 200px;
+  border-radius: 10px;
+}
+.item-car > p {
+  margin: 3px;
+}

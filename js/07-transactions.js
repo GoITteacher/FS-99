@@ -96,7 +96,7 @@ const tableEl = document.querySelector('.js-transaction-table');
 function transactionTemplate() {
   const markup = transactionHistory
     .map(el => {
-      const isActive = el.amount > 500;
+      const isActive = el.amount > 500; // false
 
       return `<tr class=${isActive ? 'valid' : 'invalid'}>
   <td>${el.id}</td>
@@ -114,5 +114,4 @@ function transactionTemplate() {
 }
 
 const markup = transactionTemplate();
-
 tableEl.lastElementChild.insertAdjacentHTML('beforeend', markup);

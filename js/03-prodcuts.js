@@ -44,3 +44,75 @@ const products = [
 ];
 
 const container = document.querySelector('.products');
+
+container.addEventListener('click', e => {
+  // if (e.target.nodeName !== 'IMG') return;
+  if (e.target === e.currentTarget) return;
+
+  const liElem = e.target.closest('li');
+  const id = +liElem.dataset.id;
+
+  const product = products.find(el => el.id === id);
+
+  showProductModal(product);
+});
+
+function showProductModal(product) {
+  const modal = basicLightbox.create(
+    `
+      <div class="modal box">
+      <img
+        src="${product.img}"
+        alt="test"
+      />
+  
+      <h3>${product.name}</h3>
+      <p>Price: ${product.price}</p>
+      </div>
+  `,
+    {
+      onShow: instance => {
+        console.log('ADD LISTENER');
+        document.addEventListener('keydown', onModalClose);
+      },
+      onClose: instance => {
+        console.log('REMOVE LISTENER');
+        document.removeEventListener('keydown', onModalClose);
+      },
+    },
+  );
+
+  modal.show();
+
+  function onModalClose(e) {
+    console.log(e.code);
+    if (e.code === 'Escape') {
+      modal.close();
+    }
+  }
+}
+
+// ======================
+
+function productTemplates() {
+  const result = products
+    .map(({ img, price, name, id }) => {
+      return `
+<li class="item" data-id="${id}">
+    <img
+      src="${img}"
+      alt="test"
+    />
+
+    <h3>${name}</h3>
+    <p>Price: ${price}</p>
+</li>`;
+    })
+    .join('\n');
+
+  container.innerHTML = result;
+}
+
+productTemplates();
+
+// ======================

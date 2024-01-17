@@ -1,11 +1,18 @@
 .box {
-  width: 100px;
-  height: 100px;
+  min-width: 100px;
+  min-height: 100px;
+  max-width: 300px;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
+  list-style: none;
 }
 
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
+  gap: 20px;
 }
 
 .red {

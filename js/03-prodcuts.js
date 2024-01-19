@@ -99,10 +99,12 @@ function productTemplates() {
     .map(({ img, price, name, id }) => {
       return `
 <li class="item" data-id="${id}">
-    <img
-      src="${img}"
-      alt="test"
-    />
+      <div>
+      <a href="${img}">
+      <img src="${img}" alt="" title=""/>
+      </a>
+      </div>
+    
 
     <h3>${name}</h3>
     <p>Price: ${price}</p>
@@ -116,3 +118,7 @@ function productTemplates() {
 productTemplates();
 
 // ======================
+
+new SimpleLightbox('.gallery a', {
+  /* options */
+});

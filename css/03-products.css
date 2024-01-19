@@ -18,9 +18,9 @@ ul {
   margin: 10px;
 }
 
-.item img {
-  width: 250px;
-  height: 300px;
+.item .imgages {
+  width: 50px;
+  height: 100px;
   border-radius: 8px;
   margin-bottom: 10px;
 }

@@ -15,6 +15,7 @@
 - Використання Vite-збірки
   [vanilla-app-template](https://github.com/goitacademy/vanilla-app-template)
   - Створюємо проект на базі збірки з README
+- Яким чином створюється лайв сторінка
 
 3. Обговоримо:
 

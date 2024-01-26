@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "push": "git add .; git commit -m 'update'; git push;"
+    "start": "vite",
+    "build": "vite build --base=/test/",
+    "preview": "vite preview",
+    "push": "git add .; git commit -m 'update'; git push"
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,16 @@
   "bugs": {
     "url": "https://github.com/GoITteacher/js-theorety-template/issues"
   },
-  "homepage": "https://github.com/GoITteacher/js-theorety-template#readme"
+  "homepage": "https://github.com/GoITteacher/js-theorety-template#readme",
+  "devDependencies": {
+    "glob": "^8.1.0",
+    "vite": "^4.0.5"
+  },
+  "dependencies": {
+    "basiclightbox": "^5.0.4",
+    "lodash": "^4.17.21",
+    "simplelightbox": "^2.14.2",
+    "vite-plugin-full-reload": "^1.0.5",
+    "vite-plugin-html-inject": "^1.0.1"
+  }
 }

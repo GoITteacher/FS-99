@@ -7,17 +7,8 @@
 
 const NOTIFICATION_DELAY = 3000;
 let timeoutId = null;
-const notification = document.querySelector(".js-alert");
+const notification = document.querySelector('.js-alert');
 
 /*
  * Функції
  */
-function onNotificationClick() {}
-
-function showNotification() {
-  console.log(
-    "Закриваємо сповіщення автоматично, щоб воно не залишалося відкритим"
-  );
-}
-
-function hideNotification() {}

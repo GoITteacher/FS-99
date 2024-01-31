@@ -6,9 +6,28 @@
  */
 
 const NOTIFICATION_DELAY = 3000;
-let timeoutId = null;
 const notification = document.querySelector('.js-alert');
+let timeoutId;
 
-/*
- * Функції
- */
+const intervalId = setInterval(() => {
+  showNotification();
+  timeoutId = setTimeout(hideNotification, 4000);
+}, 5000);
+
+notification.addEventListener('click', () => {
+  hideNotification();
+  clearTimeout(timeoutId);
+});
+
+setTimeout(() => {
+  clearInterval(intervalId);
+}, 20000);
+
+function showNotification() {
+  console.log('Show');
+  notification.classList.add('is-visible');
+}
+function hideNotification() {
+  console.log('Hide');
+  notification.classList.remove('is-visible');
+}

@@ -20,6 +20,6 @@
  * поле має очищатись, а гра починатись з початку.
  */
 
-const startBtn = document.querySelector(".start-btn");
-const container = document.querySelector(".container");
-const result = document.querySelector(".result");
+const startBtn = document.querySelector('.start-btn');
+const container = document.querySelector('.container');
+const result = document.querySelector('.result');

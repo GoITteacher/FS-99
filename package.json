@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "basiclightbox": "^5.0.4",
+    "izitoast": "^1.4.0",
     "lodash": "^4.17.21",
     "simple-notify": "^0.5.5",
     "simplelightbox": "^2.14.2",

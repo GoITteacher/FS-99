@@ -2,24 +2,31 @@ const refs = {
   formEl: document.querySelector('.js-search-form[data-id="2"]'),
   infoEl: document.querySelector('.js-binance-info'),
 };
+let userSymbol;
 
-refs.formEl.addEventListener('submit', onFormSubmit);
+// =================================
 
-function onFormSubmit(e) {
+refs.formEl.addEventListener('submit', e => {
   e.preventDefault();
-  const query = e.target.elements.query.value;
+  userSymbol = e.target.elements.query.value;
 
-  getPrice(query).then(data => {
-    renderSymbol(data);
-  });
+  getPriceBySymbol(userSymbol)
+    .then(data => {
+      renderTicker(data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 
   e.target.reset();
-}
+});
 
-function getPrice(symbol) {
+// =================================
+function getPriceBySymbol(userSymbol) {
   const BASE_URL = 'https://binance43.p.rapidapi.com';
   const END_POINT = '/ticker/price';
-  const PARAMS = `?symbol=${symbol}`;
+  const PARAMS = `?symbol=${userSymbol}`;
+
   const url = BASE_URL + END_POINT + PARAMS;
 
   const options = {
@@ -29,17 +36,22 @@ function getPrice(symbol) {
     },
   };
 
-  return fetch(url, options).then(res => res.json());
+  return fetch(url, options).then(res => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      throw new Error(res.status);
+    }
+  });
+}
+// =================================
+
+function symbolTemplate(obj) {
+  return `<span>${obj.symbol}</span>
+  <span>${obj.price}</span>`;
 }
 
-function symbolTemplate({ price, symbol }) {
-  return `
-    <span>${symbol}</span>
-    <span>${price}</span>
-  `;
-}
-
-function renderSymbol(symbol) {
-  const markup = symbolTemplate(symbol);
+function renderTicker(obj) {
+  const markup = symbolTemplate(obj);
   refs.infoEl.innerHTML = markup;
 }

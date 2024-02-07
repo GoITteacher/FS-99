@@ -6,27 +6,19 @@ import './modules/pokemon';
 import './modules/instagram';
 import './modules/user';
 
-//============================
+// ====================================
 
-/* function getCommentsByPostID(postId) {
+/* function getPostsByUser(userId) {
   const BASE_URL = 'https://jsonplaceholder.typicode.com';
-  const END_POINT = '/comments';
-  const PARAMS = `?postId=${postId}`;
+  const END_POINT = '/posts';
+  const PARAMS = `?userId=${userId}`;
   const url = BASE_URL + END_POINT + PARAMS;
 
   const options = {
     headers: {
-      test: 'Hello world',
-      test_123: 'test_123',
+      test_header: 'Volodka',
     },
   };
 
   return fetch(url, options).then(res => res.json());
-}
-
-getCommentsByPostID(1).then(data=>{log})
-getCommentsByPostID(2);
-getCommentsByPostID(3);
-getCommentsByPostID(4); */
-
-// ====================================
+} */

@@ -8,14 +8,12 @@ refs.formEl.addEventListener('submit', e => {
 
   const ip = e.target.elements.userip.value;
 
-  findIp(ip).then(data => {
+  getInfoByIp(ip).then(data => {
     renderIp(data);
   });
-
-  e.target.reset();
 });
 
-function findIp(ip) {
+function getInfoByIp(ip) {
   const BASE_URL = 'https://ip-geolocation-ipwhois-io.p.rapidapi.com';
   const END_POINT = '/json/';
   const PARAMS = `?ip=${ip}`;
@@ -83,5 +81,3 @@ function renderIp({
 
   refs.cardInfo.innerHTML = markup;
 }
-
-findIp('134.249.171.77');

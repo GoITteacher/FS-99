@@ -6,17 +6,20 @@ const refs = {
 refs.formEl.addEventListener('submit', e => {
   e.preventDefault();
 
-  const name = e.target.elements.query.value;
+  const hero = e.target.elements.query.value;
 
-  searchHero(name).then(data => {
+  searchHero(hero).then(data => {
     renderHero(data);
   });
+
+  e.target.reset();
 });
 
-function searchHero(superhero) {
-  const BASE_URL = 'https://superhero-search.p.rapidapi.com/api/';
-  const PARAMS = `?hero=${superhero}`;
-  const url = BASE_URL + PARAMS;
+function searchHero(userValue) {
+  const BASE_URL = 'https://superhero-search.p.rapidapi.com';
+  const END_POINT = '/api/';
+  const PARAMS = `?hero=${userValue}`;
+  const url = BASE_URL + END_POINT + PARAMS;
 
   const options = {
     headers: {
@@ -48,5 +51,5 @@ function heroTemplate(hero) {
 
 function renderHero(hero) {
   const markup = heroTemplate(hero);
-  refs.heroEl.insertAdjacentHTML('beforeend', markup);
+  refs.heroEl.insertAdjacentHTML('afterbegin', markup);
 }

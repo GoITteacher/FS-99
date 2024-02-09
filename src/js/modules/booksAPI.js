@@ -1,23 +1,16 @@
-export class BooksApi {
+export class BooksAPI {
   constructor() {
     this.BASE_URL = 'http://localhost:3000';
     this.END_POINT = '/books';
+    this.API_KEY = '123123';
   }
 
   getBooks() {
     const url = this.BASE_URL + this.END_POINT;
-
-    return fetch(url).then(res => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        const myError = new Error(`${res.status}`);
-        throw myError;
-      }
-    });
+    return fetch(url).then(res => res.json());
   }
 
-  createBook(book) {
+  createBook(data) {
     const url = this.BASE_URL + this.END_POINT;
 
     const options = {
@@ -25,13 +18,13 @@ export class BooksApi {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(book),
+      body: JSON.stringify(data),
     };
 
     return fetch(url, options).then(res => res.json());
   }
 
-  updateBook({ id, ...book }) {
+  updateBook(id, book) {
     const url = `${this.BASE_URL}${this.END_POINT}/${id}`;
 
     const options = {
@@ -44,7 +37,8 @@ export class BooksApi {
 
     return fetch(url, options).then(res => res.json());
   }
-  resetBook({ id, ...book }) {
+
+  resetBook(id, book) {
     const url = `${this.BASE_URL}${this.END_POINT}/${id}`;
 
     const options = {
@@ -68,3 +62,5 @@ export class BooksApi {
     return fetch(url, options).then(res => res.json());
   }
 }
+
+/// ===========================

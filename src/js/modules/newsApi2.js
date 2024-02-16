@@ -1,23 +1,30 @@
-import axios from 'axios';
+const BASE_URL = 'https://free-news.p.rapidapi.com/v1';
+const END_POINT = '/search';
+const options = {
+  headers: {
+    'X-RapidAPI-Key': '9b3ff61931msh1b42d77d34e33dap1c29cajsn3d3169e0e2f4',
+    'X-RapidAPI-Host': 'free-news.p.rapidapi.com',
+  },
+};
 
-export async function fetchArticles(query, currentPage) {
-  const API_KEY = 'c8747511a2c34730a83caaff4f3693e7';
-  const BASE_URL = 'https://free-news.p.rapidapi.com/v1';
-  const END_POINT = '/search';
-  const url = `${BASE_URL}${END_POINT}`;
+export class NewsAPI {
+  query = '';
+  #pageSize = 10;
+  page = 1;
+  total_pages = 1;
 
-  const headers = {
-    'x-rapidapi-key': '9b3ff61931msh1b42d77d34e33dap1c29cajsn3d3169e0e2f4',
-    'x-rapidapi-host': 'free-news.p.rapidapi.com',
-  };
+  getArticles() {
+    const PARAMS = new URLSearchParams({
+      q: this.query,
+      page_size: this.#pageSize,
+      page: this.page,
+    });
 
-  const params = {
-    lang: 'en',
-    q: query,
-    page_size: 15,
-    page: currentPage,
-  };
+    const url = `${BASE_URL}${END_POINT}?${PARAMS}`;
+    return fetch(url, options).then(res => res.json());
+  }
 
-  const res = await axios.get(url, { params, headers });
-  return res.data;
+  get pageSize() {
+    return this.#pageSize;
+  }
 }

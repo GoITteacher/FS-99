@@ -1,8 +1,6 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-
-import { fetchArticles } from './modules/newsAPI.js';
-import { articlesTemplate } from './templates/render-functions.js';
+import { NewsAPI } from './modules/newsAPI';
 
 const refs = {
   formElem: document.querySelector('.js-search-form'),
@@ -11,94 +9,106 @@ const refs = {
   loadElem: document.querySelector('.js-loader'),
 };
 
-// ======================================
-let query;
-let page;
-let maxPage;
+const newsApi = new NewsAPI();
 
+// ==========================================
 refs.formElem.addEventListener('submit', onFormSubmit);
-refs.btnLoadMore.addEventListener('click', onLoadMoreClick);
-
-// ======================================
 
 async function onFormSubmit(e) {
   e.preventDefault();
-  query = e.target.elements.query.value.trim();
-  page = 1;
+  showSpinner();
 
-  if (!query) {
-    showError('Empty field');
-    return;
-  }
-
-  showLoader();
-
+  const query = e.target.elements.query.value.trim();
+  newsApi.page = 1;
+  newsApi.query = query;
+  refs.articleListElem.innerHTML = '';
   try {
-    const data = await fetchArticles(query, page);
-    if (data.totalResults === 0) {
-      showError('Sorry!');
-    }
-    maxPage = Math.ceil(data.totalResults / 15);
-    refs.articleListElem.innerHTML = '';
+    const data = await newsApi.getArticles();
+    newsApi.totalResult = data.totalResults;
     renderArticles(data.articles);
   } catch (err) {
-    showError(err);
+    newsApi.totalResult = 0;
+    iziToast.error({
+      title: 'Error',
+      message: err.message,
+    });
   }
 
-  hideLoader();
-  checkBtnVisibleStatus();
-  e.target.reset();
+  checkBtnStatus();
+  hideSpinner();
 }
+// ==========================================
+
+refs.btnLoadMore.addEventListener('click', onLoadMoreClick);
 
 async function onLoadMoreClick() {
-  page += 1;
-  showLoader();
-  const data = await fetchArticles(query, page);
+  showSpinner();
+  newsApi.page += 1;
+  const data = await newsApi.getArticles();
   renderArticles(data.articles);
-  hideLoader();
-  checkBtnVisibleStatus();
-
-  const height =
-    refs.articleListElem.firstElementChild.getBoundingClientRect().height;
-
-  scrollBy({
-    behavior: 'smooth',
-    top: 10,
-  });
+  checkBtnStatus();
+  hideSpinner();
 }
 
-// ======================================
+// ==========================================
+function articleTemplate(article) {
+  const { urlToImage, title, description, author, publishedAt } = article;
+  return `<li class="card news-card">
+  <img loading="lazy"
+    class="news-image"
+    src="${urlToImage}"
+    alt="${title}"
+  />
+  <h3 class="card-title">
+    ${title}
+  </h3>
+  <p class="card-desc">
+  ${description}
+  </p>
+  <div class="card-footer">
+    <span>${author}</span>
+    <span>${publishedAt}</span>
+  </div>
+</li>
+`;
+}
+
+function articlesTemplate(articles) {
+  return articles.map(articleTemplate).join('');
+}
+
 function renderArticles(articles) {
   const markup = articlesTemplate(articles);
   refs.articleListElem.insertAdjacentHTML('beforeend', markup);
 }
+// ==========================================
 
-function showLoadBtn() {
-  refs.btnLoadMore.classList.remove('hidden');
+/* function checkBtnStatus() {
+  const maxPage = Math.ceil(newsApi.totalResult / NewsAPI.PAGE_SIZE);
+  const isLastPage = maxPage === newsApi.page;
+  refs.btnLoadMore.disabled = isLastPage;
+} */
+
+function checkBtnStatus() {
+  console.log(newsApi.totalResult);
+  console.log(newsApi.page);
+  const maxPage = Math.ceil(newsApi.totalResult / NewsAPI.PAGE_SIZE);
+  const isLastPage = maxPage <= newsApi.page;
+  if (isLastPage) {
+    refs.btnLoadMore.classList.add('hidden');
+  } else {
+    refs.btnLoadMore.classList.remove('hidden');
+  }
 }
-function hideLoadBtn() {
+
+// =======================
+
+function showSpinner() {
+  refs.loadElem.classList.remove('hidden');
   refs.btnLoadMore.classList.add('hidden');
 }
 
-function showLoader() {
-  refs.loadElem.classList.remove('hidden');
-}
-function hideLoader() {
+function hideSpinner() {
   refs.loadElem.classList.add('hidden');
+  refs.btnLoadMore.classList.remove('hidden');
 }
-
-function showError(msg) {
-  iziToast.error({
-    title: 'Error',
-    message: msg,
-  });
-}
-
-function checkBtnVisibleStatus() {
-  if (page >= maxPage) {
-    hideLoadBtn();
-  } else {
-    showLoadBtn();
-  }
-}
-// ========================================

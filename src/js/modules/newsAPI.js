@@ -1,20 +1,30 @@
 import axios from 'axios';
 
-export async function fetchArticles(query, currentPage) {
-  const API_KEY = 'c8747511a2c34730a83caaff4f3693e7';
-  const BASE_URL = 'https://newsapi.org/v2';
-  const END_POINT = '/everything';
-  const url = `${BASE_URL}${END_POINT}`;
+export class NewsAPI {
+  static PAGE_SIZE = 30;
 
-  const params = {
-    apiKey: API_KEY,
-    language: 'en',
-    sortBy: 'popularity',
-    q: query,
-    pageSize: 15,
-    page: currentPage,
-  };
+  constructor() {
+    this.BASE_URL = 'https://newsapi.org/v2';
+    this.END_POINT = '/everything';
+    this.query = null;
+    this.page = 1;
+    this.totalResult = 0;
+  }
 
-  const res = await axios.get(url, { params });
-  return res.data;
+  getArticles() {
+    const params = {
+      apiKey: 'c8747511a2c34730a83caaff4f3693e7',
+      q: this.query,
+      pageSize: NewsAPI.PAGE_SIZE,
+      page: this.page,
+    };
+    const url = `${this.BASE_URL}${this.END_POINT}`;
+    return axios.get(url, { params }).then(res => {
+      if (res.data.articles.length === 0) {
+        throw new Error('Empty');
+      } else {
+        return res.data;
+      }
+    });
+  }
 }

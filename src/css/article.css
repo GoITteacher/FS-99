@@ -44,6 +44,7 @@
   display: flex;
   justify-content: space-between;
   overflow: hidden;
+  border-radius: 15px;
 }
 
 .hidden {
